@@ -1,0 +1,20 @@
+{% extends 'main/home.html' %}
+
+{% block title %}Register {% endblock %}
+
+{% block content %}
+<div class="pt-5">
+    <h2 class="text-center text-uppercase fw-bold fs-1 text-success">Register</h2>
+    <div class="row">
+        <div class="col-md-6 w-auto mx-auto mt-5">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table class="table table-bordered border-primary ">
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" class="btn btn-lg btn-primary" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
