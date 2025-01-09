@@ -1,0 +1,61 @@
+{% extends 'main/home.html' %}
+
+{% block title %}All Posts {% endblock %}
+
+{% block content %}
+<div class="pt-5">
+    <h2 class="text-center text-uppercase fw-bold fs-1 text-success">All posts</h2>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    {% if post.image %}
+                    <div class="col-md-4">
+                        <img src="{{ post.image.url }}" class="img-fluid rounded" alt="{{ post.title }}-image">
+                    </div>
+                    {% endif %}
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a href="{% url 'viewpost' post.id %}"><h5 class="card-title text-capitalize">{{ post.title }}</h5></a>
+                            <p class="card-text">{{ post.post }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <i class="text-center card-text">
+                                    <small class="text-body-secondary">
+                                        {% if post.created_at == post.updated_at %}
+                                        {{ post.created_at }}
+                                        {% else %}
+                                        Edited: {{ post.updated_at }}
+                                        {% endif %}
+                                    </small>
+                                </i>
+                            </div>
+                            {% if request.user == post.author %}
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                {% else %}
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {% endif %}
+                                    <i class="card-text">@{{ post.author }}</i>
+                                </div>
+                                {% if request.user == post.author %}
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <a class="btn btn-sm fw-bold btn-success text-uppercase"
+                                        href="{% url 'editpost' post.id %}">edit</a>
+                                    <a class="btn btn-sm fw-bold btn-danger text-uppercase"
+                                        href="{% url 'deletepost' post.id %}">delete</a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
