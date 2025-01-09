@@ -28,11 +28,11 @@
             <div>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                    <span class="navbar-text">Logged in as {{ user.username }} | </span>
+                    <span class="navbar-text hover:text-white">Logged in as {{ user.username }} | </span>
                     <li class="nav-item">
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
-                            <input class="btn navbar-text" type="submit" value="Logout">
+                            <input class="btn nav-link" type="submit" value="Logout">
                         </form>
                     </li>
                     {% else %}

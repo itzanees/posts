@@ -3,5 +3,41 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<h1>Welcome to Smart HMS</h1>
+
+<body class="bg-secondary">
+
+    <div class="pt-5 ">
+        <div class="row">
+            <div class="col-md-6 w-auto mx-auto mt-5">
+                <h1 class="text-center text-uppercase fw-bold fs-1 text-warning"> Welcome to POSTS</h1>
+            </div>
+        </div>
+
+        <div class="pt-5 ">
+            <div class="row">
+                <div class="col-md-4 w-auto mx-auto mt-5 text-uppercase fs-3 fw-bold text-white">
+                    <a href="/" class="nav-link">
+                        <div class="bg-success p-5 ">
+                            home
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 w-auto mx-auto mt-5 text-uppercase fs-3 fw-bold text-white">
+                    <a href="{% url 'createpost' %}" class="nav-link">
+                        <div class="bg-success  p-5 ">
+                            create post
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 w-auto mx-auto mt-5 text-uppercase fs-3 fw-bold text-white">
+                    <a href="{% url 'viewpost' %}" class="nav-link">
+                        <div class="bg-success  p-5 ">
+                            view post
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+
 {% endblock %}
